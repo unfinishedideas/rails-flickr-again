@@ -2,6 +2,7 @@ require 'pry'
 
 class UsersController < ApplicationController
   before_action :admin_access, only: [:destroy]
+  before_action :authorize, only: [:edit, :update]
 
   def new
     @user = User.new
