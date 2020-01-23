@@ -1,1 +1,11 @@
 <h2>All Posts</h2>
+
+<% if @posts.any? %>
+  <h3>Posts</h3>
+  <% @posts.each do |post| %>
+    <% user = User.find(post.user_id) %>
+    <li><%= link_to post.title, user_post_path(user, post) %></li>
+  <% end %>
+<% else %>
+  <h3>No posts! :(</h3>
+<% end %>

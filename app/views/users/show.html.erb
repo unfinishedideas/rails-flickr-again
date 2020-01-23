@@ -1,1 +1,25 @@
+
 <h2><%= @user.username %></h2>
+
+<% if @user.posts.any? %>
+
+<h3>Posts</h3>
+
+<% @user.posts.each do |post| %>
+<ul>
+  <li>
+    <%= link_to post.title, user_post_path(@user, post) %>
+  </li>
+</ul>
+<% end %>
+<% else %>
+<p>No posts are listed for this user.</p>
+<% end %>
+
+<% if current_user.admin %>
+
+<p><%= link_to "Delete User", user_path,
+  :data => {:confirm => "Are you sure?",
+  :method => "delete"} %></p>
+
+<% end %>

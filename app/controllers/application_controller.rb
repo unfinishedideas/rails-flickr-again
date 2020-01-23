@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_access
+    if !current_user.admin
+      flash[:alert] = "You aren't an admin. ACCESS DENIED."
+      redirect_to '/'
+    end
+  end
+
 end

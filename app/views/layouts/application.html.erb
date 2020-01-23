@@ -11,6 +11,9 @@
 
 <body>
   <% if current_user %>
+  <% if current_user.admin %>
+  <p> ADMIN </p>
+  <%end%>
   <%= current_user.email %> | <%= link_to "Sign out", '/signout' %>
   <% else %>
   <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>

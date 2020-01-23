@@ -1,1 +1,11 @@
-<h2><%= @post.tite %></h2>
+<h2><%= @post.title %></h2>
+<p> <%= @post.description %>
+<p><%= link_to "Edit post", edit_user_post_path(@user, @post) %></p>
+
+
+
+<p><%= link_to "Delete post", user_post_path(@post, @user),
+  :data => {:confirm => "Are you sure?",
+  :method => "delete"} %></p>
+
+  <p><%= link_to "Return to user", user_path(@user) %></p>

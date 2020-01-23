@@ -1,6 +1,7 @@
 require 'pry'
 
 class UsersController < ApplicationController
+  before_action :admin_access, only: [:destroy]
 
   def new
     @user = User.new
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "You've successfully signed up!"
       session[:user_id] = @user.id
-      redirect_to "/"
+      redirect_to users_path(@user)
     else
       flash[:alert] = "There was a problem signing up."
       redirect_to '/signup'
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @users = User.all
     @posts = @user.posts
     render :show
   end

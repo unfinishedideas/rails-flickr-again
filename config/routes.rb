@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'
 
-  root to: "users#index"
+  root to: "posts#index"
 
   resources :users do
     resources :posts
